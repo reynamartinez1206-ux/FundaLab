@@ -144,11 +144,11 @@
       <!-- Cada card representa un producto -->
       <!-- Puedes ajustar títulos y precios a tu gusto -->
       <article class="card" data-id="P1" data-name="Producto 1" data-price="299.00" data-img="imagenes/p1.png">
-        <img src="./imagenes/p1.png" alt="Producto 1">
+        <img src="imagenes/p1.png" alt="Producto 1">
         <div class="card-body">
           <h2 class="card-title">Producto 1</h2>
           <p class="price">$299.00</p>
-          <button class="btn add-btn boton">Agregar al carrito</button>
+          <button class="btn add-btn">Agregar al carrito</button>
         </div>
       </article>
 
@@ -157,7 +157,7 @@
         <div class="card-body">
           <h2 class="card-title">Producto 2</h2>
           <p class="price">$249.00</p>
-          <button class="btn add-btn boton">Agregar al carrito</button>
+          <button class="btn add-btn">Agregar al carrito</button>
         </div>
       </article>
 
@@ -166,7 +166,7 @@
         <div class="card-body">
           <h2 class="card-title">Producto 3</h2>
           <p class="price">$349.00</p>
-          <button class="btn add-btn boton">Agregar al carrito</button>
+          <button class="btn add-btn">Agregar al carrito</button>
         </div>
       </article>
 
@@ -175,7 +175,7 @@
         <div class="card-body">
           <h2 class="card-title">Producto 4</h2>
           <p class="price">$199.00</p>
-          <button class="btn add-btn boton">Agregar al carrito</button>
+          <button class="btn add-btn">Agregar al carrito</button>
         </div>
       </article>
 
@@ -184,7 +184,7 @@
         <div class="card-body">
           <h2 class="card-title">Producto 5</h2>
           <p class="price">$289.00</p>
-          <button class="btn add-btn boton">Agregar al carrito</button>
+          <button class="btn add-btn">Agregar al carrito</button>
         </div>
       </article>
 
@@ -193,7 +193,7 @@
         <div class="card-body">
           <h2 class="card-title">Producto 6</h2>
           <p class="price">$189.00</p>
-          <button class="btn add-btn boton">Agregar al carrito</button>
+          <button class="btn add-btn">Agregar al carrito</button>
         </div>
       </article>
 
@@ -202,7 +202,7 @@
         <div class="card-body">
           <h2 class="card-title">Producto 7</h2>
           <p class="price">$399.00</p>
-          <button class="btn add-btn boton">Agregar al carrito</button>
+          <button class="btn add-btn">Agregar al carrito</button>
         </div>
       </article>
 
@@ -211,7 +211,7 @@
         <div class="card-body">
           <h2 class="card-title">Producto 8</h2>
           <p class="price">$219.00</p>
-          <button class="btn add-btn boton">Agregar al carrito</button>
+          <button class="btn add-btn">Agregar al carrito</button>
         </div>
       </article>
 
@@ -220,7 +220,7 @@
         <div class="card-body">
           <h2 class="card-title">Producto 9</h2>
           <p class="price">$459.00</p>
-          <button class="btn add-btn boton">Agregar al carrito</button>
+          <button class="btn add-btn">Agregar al carrito</button>
         </div>
       </article>
 
@@ -229,7 +229,7 @@
         <div class="card-body">
           <h2 class="card-title">Producto 10</h2>
           <p class="price">$329.00</p>
-          <button class="btn add-btn boton">Agregar al carrito</button>
+          <button class="btn add-btn">Agregar al carrito</button>
         </div>
       </article>
     </section>
@@ -263,7 +263,7 @@
 
     // Delegación: click en botones Agregar
     document.getElementById('product-grid').addEventListener('click', (e) => {
-      const btn = e.target.closest('.add-btn boton');
+      const btn = e.target.closest('.add-btn');
       if (!btn) return;
       const card = btn.closest('.card');
       const product = {
