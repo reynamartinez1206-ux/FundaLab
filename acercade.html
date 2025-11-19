@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acerca de - FundaLab</title>
+  <link rel="stylesheet" href="estilos_7.css" />
+
+  <style>
+
+    /* -------------------------
+       MENÚ SUPERIOR FIJO
+    -------------------------- */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #2c3e50;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 1rem 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #1abc9c;
+    }
+
+    /* -------------------------
+       CARD CENTRAL
+    -------------------------- */
+   body {
+  background: url('imagenes/encabezado_acerca.png') no-repeat center center fixed;
+  background-size: cover;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+    section {
+      max-width: 800px;
+      background: #fff;
+      margin: 150px auto 60px auto; /* deja espacio para el nav */
+      padding: 40px 60px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      text-align: justify;
+    }
+
+    section h1 {
+      text-align: center;
+      color: #2c3e50;
+      font-size: 2.2em;
+      margin-bottom: 10px;
+    }
+
+    section h1 span {
+      color: #1abc9c;
+    }
+
+    section p {
+      line-height: 1.8;
+      color: #444;
+    }
+
+    section h2 {
+      color: #2c3e50;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      font-size: 1.3em;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #1abc9c;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s ease;
+      margin-top: 20px;
+    }
+
+    .btn:hover {
+      background-color: #16a085;
+    }
+
+    /* -------------------------
+       FOOTER
+    -------------------------- */
+    footer {
+      text-align: center;
+      background: #2c3e50;
+      color: #fff;
+      padding: 20px;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+
+<body>
+
+   <!-- Menú de navegación superior -->
+  <nav id="menuSuperior">
+    <a href="index.html">Inicio</a>
+    <!-- Enlace al inicio de la página -->
+
+    <a href="Productos.html">Productos</a>
+    <!-- Enlace a la sección de productos -->
+
+    <a href="Carrito.html" class="carrito-link">
+      Carrito <span id="cart-count" class="badge">0</span>
+    </a>
+    <!-- Enlace a la sección del carrito de compras -->
+
+    <a href="acercade.html">Acerca de</a>
+    <!-- Enlace a la sección de contacto -->
+
+    <a href="Contacto.html">Contacto</a>
+    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">☰</a>
+    <!-- Ícono ☰ que aparece en móviles para abrir/cerrar el menú -->
+  </nav>
+
+  <!-- SECCIÓN ACERCA DE (CARD CENTRAL) -->
+  <section>
+    <h1>Acerca de <span>FundaLab</span></h1>
+    <p>Diseñamos más que fundas. Creamos protección con estilo.</p>
+
+    <h2>Nuestra historia</h2>
+    <p>
+      En <strong>FundaLab</strong>, cada producto nace de una idea: proteger tu dispositivo
+      sin sacrificar tu estilo. Iniciamos como un pequeño taller con una misión clara:
+      combinar diseño, funcionalidad y durabilidad en una sola funda.
+    </p>
+
+    <p>
+      Hoy somos una comunidad de diseñadores, creadores y clientes que valoran la calidad.
+      Usamos materiales premium, pruebas de resistencia y empaques sostenibles.
+      Creemos que lo que te protege también debe representar quién eres.
+    </p>
+
+    <h2>Nuestra filosofía</h2>
+    <p>
+      Innovación constante, compromiso con el cliente y respeto por el medio ambiente.
+      Cada modelo está pensado para durar y adaptarse a ti.
+    </p>
+
+    <a href="productos.html" class="btn">Ver catálogo</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 FundaLab. Todos los derechos reservados.</p>
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Carrito</title>
+
+  <!-- Usa TU hoja de estilos principal -->
+  <link rel="stylesheet" href="estilos_7.css">
+  <!-- SDK oficial de PayPal -->
+<script src="https://www.paypal.com/sdk/js?client-id=Aa16cOqoGuh67VrIuAPSP-6dYVOnHqc6A0i7M6AXkPDITY0noMU-TgZaljl7JPcVJuf3azzzWgfdfafQ&currency=MXN"></script>
+</head>
+<body>
+  <!-- MENÚ SUPERIOR (float + responsive, igual que tu sitio) -->
+  <nav id="menuSuperior">
+    <a href="index.html">Inicio</a>
+    <a href="productos.html">Productos</a>
+    <a href="Carrito.html" class="carrito-link">
+      Carrito <span id="cart-count" class="badge">0</span>
+    </a>
+    <a href="Contacto.html">Contacto</a>
+    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">☰</a>
+  </nav>
+
+  <main class="container">
+    <h1>Tu Carrito</h1>
+
+    <div id="cart-empty" class="empty hidden">
+      <p>Tu carrito está vacío.</p>
+      <a href="productos.html" class="btn">Ir a productos</a>
+    </div>
+
+    <div id="cart-wrap" class="cart">
+      <table class="cart-table" aria-describedby="Resumen del carrito">
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th class="right">Precio</th>
+            <th class="center">Cantidad</th>
+            <th class="right">Subtotal</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="cart-body">
+          <!-- items -->
+        </tbody>
+      </table>
+
+      <div class="cart-actions">
+        <a href="productos.html" class="btn outline">← Seguir comprando</a>
+        <button class="btn outline" id="clear-cart">Vaciar carrito</button>
+
+        <div class="totals">
+          <div><span>Subtotal:</span> <strong id="subtotal">$0.00</strong></div>
+          <div><span>Envío:</span> <strong id="shipping">$0.00</strong></div>
+          <div class="total-line"><span>Total:</span> <strong id="total">$0.00</strong></div>
+          <button class="btn primary" id="checkout"></button>
+          <div id="paypal-button-container" style="margin-top:20px;"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+  // Espera a que se cargue PayPal SDK
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof paypal === 'undefined') return;
+
+    // Inicializa el botón de PayPal
+    paypal.Buttons({
+      style: {
+        shape: 'pill',
+        color: 'gold',
+        layout: 'vertical',
+        label: 'pay',
+      },
+      // Calcula el total desde tu carrito
+      createOrder: function(data, actions) {
+        const total = parseFloat(document.getElementById('total').textContent.replace(/[^0-9.]/g, ''));
+        return actions.order.create({
+          purchase_units: [{
+            amount: {
+              value: total.toFixed(2) // total del carrito
+            },
+            description: "Compra en Mi Tienda"
+          }]
+        });
+      },
+      // Cuando el pago se aprueba
+      onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+          alert('Gracias ' + details.payer.name.given_name + ', tu pago fue realizado con éxito.');
+          // Aquí puedes vaciar el carrito o redirigir a una página de confirmación
+          localStorage.removeItem('mi_tienda_cart');
+          window.location.href = "gracias.html";
+        });
+      },
+      // Si el usuario cancela
+      onCancel: function(data) {
+        alert('El pago fue cancelado.');
+      },
+      // Si ocurre un error
+      onError: function(err) {
+        console.error(err);
+        alert('Ocurrió un error con PayPal.');
+      }
+    }).render('#paypal-button-container'); // Renderiza el botón
+  });
+</script>
+
+  <script>
+
+    // === Carrito ===
+    const CART_KEY = 'mi_tienda_cart';
+    const $count = document.getElementById('cart-count');
+    const $tbody = document.getElementById('cart-body');
+    const $wrap = document.getElementById('cart-wrap');
+    const $empty = document.getElementById('cart-empty');
+    const $subtotal = document.getElementById('subtotal');
+    const $shipping = document.getElementById('shipping');
+    const $total = document.getElementById('total');
+    const mxn = new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' });
+
+    const getCart = () => JSON.parse(localStorage.getItem(CART_KEY) || '[]');
+    const saveCart = (cart) => localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    const getCount = () => getCart().reduce((acc, it) => acc + it.qty, 0);
+
+    function updateBadge(){ $count.textContent = getCount(); }
+
+    function render(){
+      const cart = getCart();
+      updateBadge();
+
+      if(!cart.length){
+        $wrap.classList.add('hidden');
+        $empty.classList.remove('hidden');
+        return;
+      }
+      $wrap.classList.remove('hidden');
+      $empty.classList.add('hidden');
+
+      $tbody.innerHTML = '';
+      let sub = 0;
+
+      cart.forEach(item => {
+        const tr = document.createElement('tr');
+
+        const subtotal = item.price * item.qty;
+        sub += subtotal;
+
+        tr.innerHTML = `
+          <td>
+            <div class="row">
+              <img src="${item.img}" alt="${item.name}" class="thumb">
+              <div>
+                <strong>${item.name}</strong><br>
+                <small class="muted">ID: ${item.id}</small>
+              </div>
+            </div>
+          </td>
+          <td class="right">${mxn.format(item.price)}</td>
+          <td class="center">
+            <div class="qty" role="group" aria-label="Control de cantidad">
+              <button class="qty-btn" data-act="dec" data-id="${item.id}" aria-label="Disminuir">−</button>
+              <input class="qty-input" type="number" min="1" value="${item.qty}" data-id="${item.id}" aria-label="Cantidad">
+              <button class="qty-btn" data-act="inc" data-id="${item.id}" aria-label="Aumentar">+</button>
+            </div>
+          </td>
+          <td class="right">${mxn.format(subtotal)}</td>
+          <td class="center">
+            <button class="btn link danger" data-act="rm" data-id="${item.id}">Quitar</button>
+          </td>
+        `;
+        $tbody.appendChild(tr);
+      });
+
+      const shipping = 0; // ajusta si necesitas
+      $subtotal.textContent = mxn.format(sub);
+      $shipping.textContent = mxn.format(shipping);
+      $total.textContent = mxn.format(sub + shipping);
+    }
+
+    // Clicks en tabla
+    $tbody.addEventListener('click', (e) => {
+      const btn = e.target.closest('button');
+      if(!btn) return;
+      const id = btn.dataset.id;
+      const act = btn.dataset.act;
+      let cart = getCart();
+      const idx = cart.findIndex(i => i.id === id);
+      if (idx < 0) return;
+
+      if (act === 'inc') cart[idx].qty += 1;
+      if (act === 'dec') cart[idx].qty = Math.max(1, cart[idx].qty - 1);
+      if (act === 'rm') cart.splice(idx,1);
+
+      saveCart(cart);
+      render();
+    });
+
+    // Cambios directos en <input type=number>
+    $tbody.addEventListener('change', (e) => {
+      const input = e.target.closest('.qty-input');
+      if(!input) return;
+      const id = input.dataset.id;
+      let qty = parseInt(input.value, 10);
+      if(isNaN(qty) || qty < 1) qty = 1;
+
+      let cart = getCart();
+      const idx = cart.findIndex(i => i.id === id);
+      if (idx < 0) return;
+
+      cart[idx].qty = qty;
+      saveCart(cart);
+      render();
+    });
+
+    // Vaciar carrito
+    document.getElementById('clear-cart').addEventListener('click', () => {
+      if (confirm('¿Vaciar carrito?')) {
+        saveCart([]);
+        render();
+      }
+    });
+
+    // Checkout (ejemplo)
+    document.getElementById('checkout').addEventListener('click', () => {
+      alert('Aquí iría tu flujo de pago / checkout.');
+    });
+
+    // Init
+    render();
+  </script>
+</body>
+</html>

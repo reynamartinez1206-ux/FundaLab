@@ -1,0 +1,288 @@
+﻿<!DOCTYPE html>
+<!-- Indica que el documento está escrito en HTML5 -->
+
+<html lang="es">
+<!-- Define que el idioma principal del contenido es español -->
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Establece la codificación de caracteres como UTF-8 para soportar acentos y símbolos -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Hace que el diseño se adapte a pantallas pequeñas como móviles -->
+
+  <title>Menú Responsivo</title>
+  <!-- Título que aparecerá en la pestaña del navegador -->
+
+  <link rel="stylesheet" href="estilos_7.css">
+  <!-- Enlace al archivo externo de estilos CSS -->
+
+
+
+  <style>
+    /* Estilos CSS internos para el diseño de la página */
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Define la fuente general y elimina márgenes/padding por defecto */
+
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+.boton{
+  background-color: #1abc9c;
+}
+    /* Estilo del encabezado: fondo oscuro, texto blanco, centrado y con espacio interno */
+
+    .main-image {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Imagen principal: ocupa todo el ancho, se recorta si es muy alta, se adapta sin deformarse */
+
+    h2 {
+      text-align: center;
+      margin: 20px 0;
+      color: #34495e;
+    }
+
+    /* Subtítulo centrado con márgenes verticales y color personalizado */
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      padding: 20px;
+    }
+
+    /* Galería con diseño en cuadrícula: columnas automáticas, mínimo 200px por imagen, espacio entre ellas */
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Estilo para cada imagen de la galería: bordes redondeados y sombra suave */
+
+    @media (max-width: 600px) {
+      .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      }
+    }
+
+    /* Adaptación para pantallas pequeñas: reduce el tamaño mínimo de las columnas a 150px */
+  </style>
+
+
+
+
+
+</head>
+
+<body>
+  <!-- Inicio del cuerpo visible de la página -->
+
+  <!-- Menú de navegación superior -->
+  <nav id="menuSuperior">
+    <a href="index.html">Inicio</a>
+    <!-- Enlace al inicio de la página -->
+
+    <a href="Productos.html">Productos</a>
+    <!-- Enlace a la sección de productos -->
+
+    <a href="Carrito.html" class="carrito-link">
+      Carrito <span id="cart-count" class="badge">0</span>
+    </a>
+    <!-- Enlace a la sección del carrito de compras -->
+
+    <a href="acercade.html">Acerca de</a>
+    <a href="Contacto.html">Contacto</a>
+    <!-- Enlace a la sección de contacto -->
+
+    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">☰</a>
+    <!-- Ícono ☰ que aparece en móviles para abrir/cerrar el menú -->
+  </nav>
+
+  <!-- Contenido de ejemplo debajo del menú -->
+  <div style="padding:0px">
+
+    <!-- Título de bienvenida -->
+
+
+    <!-- Escribirlo &#9776; -->
+  </div>
+
+
+  <header>
+    <h1>Bienvenidos a la Galería</h1>
+  </header>
+  <!-- Encabezado principal con título -->
+
+  <!-- <img src="imagenes/encabezado.png" alt="Imagen principal" class="main-image"> -->
+  <!-- Imagen destacada debajo del encabezado -->
+
+  <h2>Galería de Imágenes</h2>
+  <!-- Subtítulo para la sección de galería -->
+
+ <main class="container">
+    <h1>Galería</h1>
+
+    <!-- Grid de cards -->
+    <section class="grid" id="product-grid">
+      <!-- Cada card representa un producto -->
+      <!-- Puedes ajustar títulos y precios a tu gusto -->
+      <article class="card" data-id="P1" data-name="Producto 1" data-price="299.00" data-img="Imagenes/P1.png">
+        <img src="Imagenes/P1.png" alt="Producto 1">
+        <div class="card-body">
+          <h2 class="card-title">Producto 1</h2>
+          <p class="price">$299.00</p>
+          <button class="btn add-btn boton">Agregar al carrito</button>
+        </div>
+      </article>
+
+      <article class="card" data-id="P2" data-name="Producto 2" data-price="249.00" data-img="Imagenes/P2.png">
+        <img src="Imagenes/P2.png" alt="Producto 2">
+        <div class="card-body">
+          <h2 class="card-title">Producto 2</h2>
+          <p class="price">$249.00</p>
+          <button class="btn add-btn boton">Agregar al carrito</button>
+        </div>
+      </article>
+
+      <article class="card" data-id="P3" data-name="Producto 3" data-price="349.00" data-img="Imagenes/P3.png">
+        <img src="Imagenes/P3.png" alt="Producto 3">
+        <div class="card-body">
+          <h2 class="card-title">Producto 3</h2>
+          <p class="price">$349.00</p>
+          <button class="btn add-btn boton">Agregar al carrito</button>
+        </div>
+      </article>
+
+      <article class="card" data-id="P4" data-name="Producto 4" data-price="199.00" data-img="Imagenes/P4.png">
+        <img src="Imagenes/P4.png" alt="Producto 4">
+        <div class="card-body">
+          <h2 class="card-title">Producto 4</h2>
+          <p class="price">$199.00</p>
+          <button class="btn add-btn boton">Agregar al carrito</button>
+        </div>
+      </article>
+
+      <article class="card" data-id="P5" data-name="Producto 5" data-price="289.00" data-img="Imagenes/P5.png">
+        <img src="Imagenes/P5.png" alt="Producto 5">
+        <div class="card-body">
+          <h2 class="card-title">Producto 5</h2>
+          <p class="price">$289.00</p>
+          <button class="btn add-btn boton">Agregar al carrito</button>
+        </div>
+      </article>
+
+      <article class="card" data-id="P6" data-name="Producto 6" data-price="189.00" data-img="Imagenes/P6.png">
+        <img src="Imagenes/P6.png" alt="Producto 6">
+        <div class="card-body">
+          <h2 class="card-title">Producto 6</h2>
+          <p class="price">$189.00</p>
+          <button class="btn add-btn boton">Agregar al carrito</button>
+        </div>
+      </article>
+
+      <article class="card" data-id="P7" data-name="Producto 7" data-price="399.00" data-img="Imagenes/P7.png">
+        <img src="Imagenes/P7.png" alt="Producto 7">
+        <div class="card-body">
+          <h2 class="card-title">Producto 7</h2>
+          <p class="price">$399.00</p>
+          <button class="btn add-btn boton">Agregar al carrito</button>
+        </div>
+      </article>
+
+      <article class="card" data-id="P8" data-name="Producto 8" data-price="219.00" data-img="Imagenes/P8.png">
+        <img src="Imagenes/P8.png" alt="Producto 8">
+        <div class="card-body">
+          <h2 class="card-title">Producto 8</h2>
+          <p class="price">$219.00</p>
+          <button class="btn add-btn boton">Agregar al carrito</button>
+        </div>
+      </article>
+
+      <article class="card" data-id="P9" data-name="Producto 9" data-price="459.00" data-img="Imagenes/P9.png">
+        <img src="Imagenes/P9.png" alt="Producto 9">
+        <div class="card-body">
+          <h2 class="card-title">Producto 9</h2>
+          <p class="price">$459.00</p>
+          <button class="btn add-btn boton">Agregar al carrito</button>
+        </div>
+      </article>
+
+      <article class="card" data-id="P10" data-name="Producto 10" data-price="329.00" data-img="Imagenes/P10.png">
+        <img src="Imagenes/P10.png" alt="Producto 10">
+        <div class="card-body">
+          <h2 class="card-title">Producto 10</h2>
+          <p class="price">$329.00</p>
+          <button class="btn add-btn boton">Agregar al carrito</button>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    const CART_KEY = 'mi_tienda_cart';
+    const $count = document.getElementById('cart-count');
+    const mxn = new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' });
+
+    const getCart = () => JSON.parse(localStorage.getItem(CART_KEY) || '[]');
+    const saveCart = (cart) => localStorage.setItem(CART_KEY, JSON.stringify(cart));
+
+    const getCount = () => getCart().reduce((acc, it) => acc + it.qty, 0);
+
+    function updateBadge(){
+      $count.textContent = getCount();
+    }
+
+    function addToCart(product){
+      const cart = getCart();
+      const idx = cart.findIndex(i => i.id === product.id);
+      if (idx >= 0) {
+        cart[idx].qty += 1;
+      } else {
+        cart.push({ ...product, qty: 1 });
+      }
+      saveCart(cart);
+      updateBadge();
+    }
+
+    // Delegación: click en botones Agregar
+    document.getElementById('product-grid').addEventListener('click', (e) => {
+      const btn = e.target.closest('.add-btn boton');
+      if (!btn) return;
+      const card = btn.closest('.card');
+      const product = {
+        id: card.dataset.id,
+        name: card.dataset.name,
+        price: parseFloat(card.dataset.price),
+        img: card.dataset.img
+      };
+      addToCart(product);
+      btn.textContent = '¡Agregado!';
+      setTimeout(() => btn.textContent = 'Agregar al carrito', 900);
+    });
+
+    // Init
+    updateBadge();
+  </script>
+
+
+
+</body>
+
+</html>

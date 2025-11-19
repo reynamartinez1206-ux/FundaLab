@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="estilos_7.css">
+
+  <title>Contacto</title>
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function () {
+      emailjs.init("Wr5qAueXQYv2kCCBt");
+    })();
+  </script>
+
+  <!-- ESTILO ELEGANTE -->
+  <style>
+    body {
+      font-family: "Poppins", Arial, sans-serif;
+      margin-top: 100px;
+      background: linear-gradient(135deg, #f5e6f7, #d9c2e9);
+    }
+
+    h1 {
+      text-align: center;
+      color: #4b2d6b;
+      margin-top: 30px;
+      font-size: 32px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+    }
+
+    .contact-wrapper {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .card {
+      flex: 1;
+      min-width: 360px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      padding: 30px;
+      border-top: 6px solid #8f62c4;
+      animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card h2 {
+      margin-top: 0;
+      color: #6c3faf;
+      text-align: center;
+      font-size: 22px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    input,
+    textarea {
+      padding: 14px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: 1px solid #c5a8db;
+      background: #faf7fd;
+      transition: 0.3s;
+      outline: none;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: #8f62c4;
+      box-shadow: 0 0 6px rgba(143, 98, 196, 0.4);
+    }
+
+    button {
+      background: #8f62c4;
+      color: #fff;
+      padding: 14px;
+      border: none;
+      cursor: pointer;
+      border-radius: 10px;
+      font-size: 17px;
+      transition: 0.3s;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #6c3faf;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,.2);
+    }
+
+    .mapa {
+      width: 100%;
+      height: 350px;
+      border: none;
+      border-radius: 12px;
+      margin-top: 15px;
+    }
+
+    /* ESTRELLAS */
+    .rating {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin: 10px 0;
+    }
+
+    .rating span {
+      font-size: 36px;
+      cursor: pointer;
+      transition: 0.2s;
+      color: #ccc;
+    }
+
+    .rating span:hover {
+      transform: scale(1.2);
+    }
+
+    /* BOTÓN WHATSAPP */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: #25D366;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+      z-index: 999;
+      transition: 0.3s;
+    }
+
+    .whatsapp-btn:hover {
+      transform: scale(1.12);
+    }
+  </style>
+</head>
+
+<body>
+  <nav id="menuSuperior">
+    <a href="index.html">Inicio</a>
+    <a href="Productos.html">Productos</a>
+    <a href="Carrito.html" class="carrito-link">Carrito</a>
+    <a href="acercade.html">Acerca de</a>
+    <a href="Contacto.html">Contacto</a>
+  </nav>
+
+  <!-- TÍTULO -->
+  <h1>Contáctanos 💜</h1>
+
+  <!-- TARJETAS -->
+  <div class="contact-wrapper">
+
+    <!-- CARD FORM -->
+    <div class="card">
+      <h2>Envíanos un mensaje</h2>
+
+      <form id="contactForm">
+        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+        <input type="email" id="correo" name="correo" placeholder="Tu correo" required>
+        <textarea id="mensaje" name="mensaje" rows="5" placeholder="Escribe tu mensaje..." required></textarea>
+
+        <label style="font-weight: bold; text-align:center;">Califica tu experiencia:</label>
+
+        <div class="rating">
+          <span data-star="1">★</span>
+          <span data-star="2">★</span>
+          <span data-star="3">★</span>
+          <span data-star="4">★</span>
+          <span data-star="5">★</span>
+        </div>
+
+        <input type="hidden" id="calificacion" name="calificacion" value="0">
+
+        <button type="submit">Enviar mensaje</button>
+      </form>
+    </div>
+
+    <!-- CARD MAPA -->
+    <div class="card">
+      <h2>Ubicación</h2>
+
+      <iframe class="mapa"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.6415300416287!2d-99.171951!3d19.427049!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff362e0b1243%3A0xbadbe20e6f04e5d3!2sPalacio%20de%20los%20Deportes!5e0!3m2!1ses-419!2smx!4v1234567890"
+        allowfullscreen="" loading="lazy">
+      </iframe>
+    </div>
+
+  </div>
+
+  <!-- ENVÍO EMAILJS -->
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      emailjs.send("service_3zwezfb", "template_o8q5ufk", {
+        name: document.getElementById("nombre").value,
+        email: document.getElementById("correo").value,
+        message: document.getElementById("mensaje").value,
+        time: new Date().toLocaleString(),
+        rating: document.getElementById("calificacion").value
+      }).then(() => {
+        alert("Mensaje enviado correctamente 😊");
+        document.getElementById("contactForm").reset();
+      }, (error) => {
+        alert("Error al enviar mensaje: " + JSON.stringify(error));
+      });
+    });
+  </script>
+
+  <!-- ESTRELLAS FUNCIONALES -->
+  <script>
+    const stars = document.querySelectorAll(".rating span");
+    const ratingInput = document.getElementById("calificacion");
+
+    stars.forEach(star => {
+      star.addEventListener("click", () => {
+        let value = star.getAttribute("data-star");
+        ratingInput.value = value;
+
+        stars.forEach(s => {
+          s.style.color = s.getAttribute("data-star") <= value ? "#f1c40f" : "#ccc";
+        });
+      });
+    });
+  </script>
+
+  <!-- WHATSAPP -->
+  <a href="https://wa.me/5215524678399?text=Hola%20quiero%20más%20información" class="whatsapp-btn" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+      style="width: 60%; height: 60%;" />
+  </a>
+
+</body>
+
+</html>

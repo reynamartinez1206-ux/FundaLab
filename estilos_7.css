@@ -1,0 +1,365 @@
+    body {
+      margin: 100px;
+      /* Elimina el margen por defecto del navegador */
+      font-family: Arial, sans-serif;
+      /* Define la fuente principal del sitio */
+    }
+
+    /* Contenedor principal del menú de navegación */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #2c3e50;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 1rem 0;
+      z-index: 1000;
+    }
+
+    /* Estilo para cada enlace del menú */
+    nav a {
+      float: left;
+      /* Alinea los enlaces horizontalmente */
+      display: block;
+      /* Hace que cada enlace ocupe todo el espacio disponible */
+      color: white;
+      /* Color del texto de los enlaces */
+      text-align: center;
+      /* Centra el texto dentro de cada enlace */
+      padding: 14px 20px;
+      /* Espaciado interno: 14px arriba/abajo, 20px izquierda/derecha */
+      text-decoration: none;
+      /* Elimina el subrayado de los enlaces */
+    }
+
+    /* Efecto visual al pasar el mouse sobre los enlaces */
+    nav a:hover {
+      background-color: #1abc9c;
+      /* Cambia el fondo al pasar el mouse */
+      color: white;
+      /* Asegura que el texto siga siendo blanco */
+    }
+
+    /* Ícono del menú (☰), oculto por defecto en pantallas grandes */
+    nav .icon {
+      display: none;
+      /* No se muestra hasta que se active en pantallas pequeñas */
+    }
+
+    /* Estilos para pantallas pequeñas (menos de 600px) */
+    @media screen and (max-width: 600px) {
+      nav a {
+        display: none;
+        /* Oculta todos los enlaces del menú */
+      }
+
+      nav a.icon {
+        float: right;
+        /* Alinea el ícono a la derecha */
+        display: block;
+        /* Muestra el ícono ☰ */
+      }
+
+      nav.responsive {
+        position: relative;
+        /* Permite posicionar el ícono correctamente */
+      }
+
+      nav.responsive a {
+        float: none;
+        /* Elimina el flotado para que los enlaces se apilen verticalmente */
+        display: block;
+        /* Muestra los enlaces como bloques uno debajo del otro */
+        text-align: left;
+        /* Alinea el texto a la izquierda */
+      }
+
+      nav.responsive a.icon {
+        position: absolute;
+        /* Posiciona el ícono de forma absoluta */
+        right: 0;
+        top: 0;
+        /* Lo coloca en la esquina superior derecha */
+      }
+    }
+
+    :root {
+      --bg: #f6f7fb;
+      --card: #fff;
+      --text: #222;
+      --muted: #6b7280;
+      --primary: #2563eb;
+      --danger: #dc2626;
+      --border: #e5e7eb;
+      --shadow: 0 8px 20px rgba(0, 0, 0, .06);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1100px, 90vw);
+      margin: 2rem auto;
+    }
+
+    h1 {
+      margin: 0 0 1rem;
+    }
+
+    .nav {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .8rem 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav .logo {
+      font-weight: 700;
+    }
+
+    .nav .links a {
+      margin-left: 1rem;
+    }
+
+    .nav .icon {
+      display: none;
+    }
+
+    .badge {
+      background: var(--primary);
+      color: #fff;
+      font-size: .75rem;
+      padding: .15rem .45rem;
+      border-radius: 999px;
+      margin-left: .35rem;
+    }
+
+    /* Grid de cards */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: .9rem;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+
+    .card-title {
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    .price {
+      color: var(--muted);
+      margin: .25rem 0 .5rem;
+    }
+
+    .btn {
+      background: var(--text);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: .6rem .9rem;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .btn:hover {
+      opacity: .92;
+    }
+
+    .btn.primary {
+      background: var(--primary);
+    }
+
+    .btn.outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .btn.link {
+      background: transparent;
+      padding: .2rem .5rem;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn.link.danger {
+      color: var(--danger);
+    }
+
+    /* Carrito */
+    .cart-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .cart-table thead {
+      background: #f3f4f6;
+    }
+
+    .cart-table th,
+    .cart-table td {
+      padding: .9rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+
+    .right {
+      text-align: right;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+    }
+
+    .thumb {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .qty {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .qty-input {
+      width: 56px;
+      padding: .4rem;
+      text-align: center;
+      border: none;
+      outline: none;
+    }
+
+    .qty-btn {
+      width: 34px;
+      height: 34px;
+      border: none;
+      background: #f8fafc;
+      cursor: pointer;
+    }
+
+    .qty-btn:hover {
+      background: #eef2ff;
+    }
+
+    .cart-actions {
+      margin-top: 1rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .totals {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1rem;
+      min-width: 260px;
+      box-shadow: var(--shadow);
+    }
+
+    .totals>div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: .25rem 0;
+    }
+
+    .total-line {
+      font-size: 1.15rem;
+      font-weight: 700;
+      border-top: 1px dashed var(--border);
+      padding-top: .5rem;
+    }
+
+    .empty {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* Responsive menu básico (si usas tu toggle) */
+    @media (max-width: 700px) {
+      .nav .links {
+        display: flex;
+        gap: .5rem;
+        flex-wrap: wrap;
+      }
+
+    }

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FundaLab | Promos y Más</title>
+    <link rel="stylesheet" href="estilos_7.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Lilita+One&family=Rubik+Maps&display=swap" rel="stylesheet">
+  <style>
+    .lilita-one-regular {
+    font-family: "Lilita One", sans-serif;
+    font-weight: 400;
+    font-size: 100px;
+    font-style: normal;
+    }
+
+    section {
+      min-height: 60vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 60px 20px;
+      opacity: 0;
+      transform: translateY(60px);
+      transition: all 0.8s ease-out;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* -------------------------
+       BANNERS
+    -------------------------- */
+    .banner {
+      background-image: url('imagenes/encabezado.png');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+    }
+    .bannerdos {
+      background-image: url('imagenes/encabezado_fundas.png');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+    }
+        .bannertres {
+      background-image: url('imagenes/encabezadotres.png');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+    }
+
+    .banner h1 {
+      font-size: 3rem;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 20px 40px;
+      border-radius: 10px;
+    }
+
+    /* -------------------------
+       PRODUCTOS
+    -------------------------- */
+    .productos {
+      background: #fff;
+      text-align: center;
+    }
+
+    .productos h2 {
+      color: #2c3e50;
+      margin-bottom: 2rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      width: min(1100px, 90vw);
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .btn {
+      background: #1abc9c;
+      border: none;
+      color: white;
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #16a085;
+      transform: scale(1.05);
+    }
+
+    /* -------------------------
+       SECCIONES DE COLOR
+    -------------------------- */
+    .color1 {
+      background: #8e9dd7;
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    .color1 h2 {
+      margin-bottom: 10px;
+      font-size: 1.7rem;
+    }
+
+    .color1 p {
+      max-width: 1000px;
+      font-size: 1.2rem;
+    }
+
+    .color1 .btn {
+      margin-top: 20px;
+    }
+
+    .color2 {
+      background: #2c3e50;
+      color: #ecf0f1;
+      text-align: center;
+      padding-bottom: 80px;
+    }
+
+    .color2 a {
+      color: #1abc9c;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .color2 a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+   <!-- Menú de navegación superior -->
+  <nav id="menuSuperior">
+    <a href="index.html">Inicio</a>
+    <!-- Enlace al inicio de la página -->
+
+    <a href="Productos.html">Productos</a>
+    <!-- Enlace a la sección de productos -->
+
+    <a href="Carrito.html" class="carrito-link">
+      Carrito
+    </a>
+    <!-- Enlace a la sección del carrito de compras -->
+
+    <a href="acercade.html">Acerca de</a>
+    <!-- Enlace a la sección de contacto -->
+     <a href="Contacto.html">Contacto</a>
+  </nav>
+
+  <!-- SECCIÓN 1: BANNER PRINCIPAL -->
+  <section id="inicio" class="banner">
+   
+  </section>
+
+  <!-- SECCIÓN 2: PRODUCTOS -->
+  <section id="productos" class="productos">
+    <h2>Nuestros Productos</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="Imagenes/P1.png" alt="Funda Premium">
+        <div class="card-body">
+          <h3>Funda Premium</h3>
+          <p>$299.00</p>
+          <a href="productos.html"><button class="btn">Ver más</button></a>
+        </div>
+      </div>
+      <div class="card">
+        <img src="Imagenes/P2.png" alt="Funda Transparente">
+        <div class="card-body">
+          <h3>Funda Transparente</h3>
+          <p>$249.00</p>
+          <a href="productos.html"><button class="btn">Ver más</button></a>
+        </div>
+      </div>
+      <div class="card">
+        <img src="Imagenes/P3.png" alt="Funda Antigolpes">
+        <div class="card-body">
+          <h3>Funda Antigolpes</h3>
+          <p>$349.00</p>
+          <a href="productos.html"><button class="btn">Ver más</button></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 3: OTRO BANNER -->
+  <section id="promos" class="bannerdos">
+     <span class="lilita-one-regular">FundaLab: ¡Protege tu estilo!</span>
+  </section>
+
+  <!-- SECCIÓN 4: COLOR CON TEXTO Y BOTÓN -->
+<section class="color1">
+  <h2>¡Protege tu teléfono con estilo!</h2>
+  <p>
+    En <strong>FundaLab</strong> creemos que una funda no solo protege, también refleja tu personalidad.  
+    Cada modelo está pensado para quienes buscan algo más que lo básico: texturas únicas, materiales duraderos y diseños que expresan quién eres.
+  </p>
+  <p>
+    Ya sea que prefieras lo minimalista o lo vibrante, nuestras fundas están hechas para acompañarte todos los días sin perder estilo ni funcionalidad.  
+    Porque proteger tu celular también puede ser una declaración de diseño.
+  </p>
+  <a href="productos.html"><button class="btn">Ver productos</button></a>
+</section>
+
+  <!-- SECCIÓN 5: TERCER BANNER -->
+  <section class="bannertres">
+    <span class="lilita-one-regular">Diseños que te representan</span>
+  </section>
+
+  <!-- SECCIÓN 6: FOOTER CON COLOR Y LINKS -->
+  <section class="color2" id="contacto">
+    <h2>FundaLab © 2025</h2>
+    <p>Fundas personalizadas para todos los gustos y estilos.</p>
+    <div>
+      <a href="#inicio">Inicio</a> |
+      <a href="acercade.html">Acerca de</a> |
+      <a href="#productos">Productos</a>
+    </div>
+  </section>
+
+  <script>
+    // Animar secciones al hacer scroll
+    const sections = document.querySelectorAll('section');
+    const revealOnScroll = () => {
+      const triggerBottom = window.innerHeight * 0.85;
+      sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < triggerBottom) {
+          sec.classList.add('visible');
+        }
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+  </script>
+
+</body>
+</html>
